@@ -53,8 +53,9 @@ x402's proposed **`htlc-path`** header extension carries VGP state across hops.
 1. **Trust isolation:** Each gateway enforces local policy; no global trust required
 2. **Atomic settlement:** HTLCs ensure all-or-nothing value transfer
 3. **Path vector routing:** Advertise capabilities without exposing internal topology
-4. **Extensibility:** Attribute registry allows domain-specific metadata
-5. **Auditability:** Signed adverts and TDR logs enable compliance verification
+4. **Policy enforcement:** Gateways validate compliance, rate limits, and risk thresholds
+5. **Extensibility:** Attribute registry allows domain-specific metadata
+6. **Auditability:** Signed adverts and TDR logs enable compliance verification
 
 ---
 
@@ -65,7 +66,7 @@ x402's proposed **`htlc-path`** header extension carries VGP state across hops.
 ```
 ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
 │  Domain A   │◄───────►│  Gateway 1  │◄───────►│  Gateway 2  │
-│  (Client)   │  mTLS   │  (E-NAT)    │  mTLS   │  (E-NAT)    │
+│  (Client)   │  mTLS   │ (Boundary)  │  mTLS   │ (Boundary)  │
 └─────────────┘         └─────────────┘         └─────────────┘
                               │                       │
                               │ VGP Peering          │
@@ -76,17 +77,15 @@ x402's proposed **`htlc-path`** header extension carries VGP state across hops.
                         └─────────────┘         └─────────────┘
 ```
 
-### 1.2 E-NAT Wallets
+### 1.2 Gateway Functions
 
-Each gateway maintains an **Economic Network Address Translation (E-NAT)** wallet:
-- **Border wallet:** Holds HTLCs for cross-domain transfers
-- **Policy engine:** Enforces rate limits, compliance rules, risk scoring
-- **Settlement coordinator:** Manages lock/unlock/refund lifecycle
+VGP gateways perform the following functions:
+- **HTLC management:** Create, lock, and settle cross-domain value transfers
+- **Policy enforcement:** Validate compliance requirements, rate limits, and risk thresholds
+- **Message routing:** Forward queries and adverts between peered domains
+- **Settlement coordination:** Manage lock/unlock/refund lifecycle atomically
 
-E-NAT wallets:
-- Isolate internal liquidity from external exposure
-- Enable domain-specific accounting (different rails, currencies, or ledgers)
-- Provide choke points for compliance (AML, sanctions, usage caps)
+Gateways isolate internal domain details from external peers while enabling interoperability.
 
 ### 1.3 Message Flow
 
@@ -379,17 +378,41 @@ See [`/examples/three-domain-flow.md`](../examples/three-domain-flow.md) for det
 
 ---
 
-## Appendix A: Terminology
+## Appendix A: Implementation Guidance (Informative)
 
-- **Trust boundary:** Interface between administrative/economic domains
-- **E-NAT:** Economic Network Address Translation wallet
-- **HTLC:** Hashed Time-Locked Contract
-- **TDR:** Transaction Detail Record (x402 audit log)
-- **Path vector:** Route advertisement including cost/policy metadata
+### A.1 Economic NAT (E-NAT)
+
+Implementations **MAY** employ Economic Network Address Translation (E-NAT) or equivalent border-wallet mapping to enforce policy isolation and contain risk. Such systems are out of scope for this specification but are commonly deployed at trust boundaries.
+
+**E-NAT Characteristics (Informative):**
+- **Border wallets:** Hold HTLCs for cross-domain transfers, isolating internal liquidity
+- **Policy engines:** Enforce rate limits, compliance rules (KYC/AML), and risk scoring
+- **Domain mapping:** Enable different internal accounting rails, currencies, or ledgers
+- **Compliance choke points:** Provide centralized control for sanctions screening and usage caps
+
+E-NAT is analogous to Network Address Translation (NAT) in IP networks, but operates on economic/value flows rather than packet flows.
+
+### A.2 Reference Implementations
+
+Gateway implementers should consider:
+- Multi-signature HTLC wallets for operational security
+- Rate limiting per sender/path to prevent abuse
+- Automated compliance screening via third-party APIs
+- TDR archival policies for audit retention requirements
 
 ---
 
-## Appendix B: Revision History
+## Appendix B: Terminology
+
+- **Trust boundary:** Interface between administrative/economic domains
+- **HTLC:** Hashed Time-Locked Contract
+- **TDR:** Transaction Detail Record (x402 audit log)
+- **Path vector:** Route advertisement including cost/policy metadata
+- **Gateway:** VGP-speaking node at a trust boundary
+
+---
+
+## Appendix C: Revision History
 
 | Version | Date | Changes |
 |---------|------|---------|

@@ -41,9 +41,9 @@ Client sends `QUERY` → Gateways respond with `ADVERT` messages containing:
 
 ### 2. **Lock Value**
 Client selects path → Gateways create HTLCs (Hashed Time-Locked Contracts):
-- Funds locked with cryptographic hash
+- Funds locked with cryptographic hash at each gateway
 - Timeout ensures refund if service fails
-- Secret reveal triggers atomic unlock across all hops
+- Secret reveal triggers atomic unlock cascade across all hops
 
 ### 3. **Deliver Service**
 Provider delivers service via x402 protocol:
@@ -60,11 +60,14 @@ Provider reveals secret → HTLCs unlock in cascade:
 
 ## Key Components
 
-### E-NAT Wallets
-**Economic Network Address Translation** — border wallets that:
-- Hold HTLCs for cross-domain transfers
-- Enforce local policy (KYC, rate limits, sanctions)
-- Isolate internal liquidity from external risk
+### Gateway Functions
+VGP gateways manage trust boundaries by:
+- Holding HTLCs for cross-domain transfers
+- Enforcing local policy (KYC, rate limits, compliance)
+- Routing messages between peered domains
+- Coordinating atomic settlement
+
+**Note:** Many implementations use Economic NAT (E-NAT) border wallets for policy isolation, but this is implementation-specific.
 
 ### Message Types
 - **QUERY** / **ADVERT** — Path discovery
@@ -131,7 +134,7 @@ This enables:
 1. **Atomic settlement:** HTLC secret reveal is all-or-nothing
 2. **Timeout protection:** Refunds prevent lock-up attacks
 3. **Cryptographic proofs:** Ed25519 signatures prevent forgery
-4. **Policy isolation:** E-NAT wallets enforce local rules without global coordination
+4. **Policy isolation:** Gateways enforce local rules without global coordination
 5. **Privacy:** Path-vector design hides internal topology
 
 ---

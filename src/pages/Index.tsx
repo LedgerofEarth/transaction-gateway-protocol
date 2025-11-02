@@ -97,9 +97,9 @@ const Index = () => {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>E-NAT Wallets</CardTitle>
+                <CardTitle>Policy Enforcement</CardTitle>
                 <CardDescription>
-                  Policy enforcement and risk isolation at trust boundaries
+                  Gateway-level validation of compliance, rate limits, and risk thresholds
                 </CardDescription>
               </CardHeader>
             </Card>

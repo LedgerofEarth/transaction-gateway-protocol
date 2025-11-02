@@ -16,7 +16,7 @@ VGP is a **trust-boundary routing protocol** that enables atomic value transfers
 
 - **Path-vector routing** (like BGP, but for value)
 - **HTLCs** (Hashed Time-Locked Contracts) for atomic settlement
-- **E-NAT wallets** for policy enforcement
+- **Gateway policy enforcement** at trust boundaries
 - **mTLS peering** with signed messages
 
 ## Core Message Types

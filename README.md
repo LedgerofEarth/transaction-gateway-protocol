@@ -13,7 +13,7 @@ It operates **above x402**, using **Hashed Time-Locked Contracts (HTLCs)** to en
 - **Path-vector negotiation** (like BGP, but for value)
 - **Per-request lifecycle:** `DISCOVER → QUOTED → SELECTED → LOCKED → SERVING → PROVED → SETTLED → CLOSED`
 - **Secure mTLS peering** with signed adverts and encrypted TDR logs
-- **E-NAT border wallets** for policy enforcement and risk isolation
+- **Policy enforcement** at gateway boundaries for compliance and risk management
 - **Extensible attribute registry** for QoS, risk, compliance, and escrow types
 
 ## Documentation
