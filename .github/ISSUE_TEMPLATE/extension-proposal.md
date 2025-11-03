@@ -9,7 +9,7 @@ labels: enhancement
 Describe the extension or attribute being proposed.
 
 ### Motivation
-Why this addition improves VGP interoperability.
+Why this addition improves TGP interoperability.
 
 ### Schema Impact
 List affected sections or JSON schemas.

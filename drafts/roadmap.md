@@ -1,4 +1,4 @@
-# VGP Roadmap
+# TGP Roadmap
 
 **Last Updated:** 2025-01
 
@@ -10,7 +10,7 @@
 **Focus:** Core protocol definition
 
 ### Deliverables
-- ✅ Full VGP-00 specification
+- ✅ Full TGP-00 specification
 - ✅ Message schemas (QUERY, ADVERT, SELECT, LOCKED, PROOF, SETTLE, ERROR)
 - ✅ State machine definition
 - ✅ Attribute registry (base set)
@@ -40,7 +40,7 @@
 
 2. **x402 Integration**
    - Submit `htlc-path` header PR to x402 spec
-   - Implement VGP ↔ x402 bridge
+   - Implement TGP ↔ x402 bridge
    - TDR correlation with VGP state
 
 3. **Testing Framework**
@@ -160,4 +160,4 @@ Each version must meet:
 ---
 
 **Maintainer:** Ledger of Earth  
-**Contact:** vgp@ledgerofearth.org
+**Contact:** dbigge@ledgerofearth.org

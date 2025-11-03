@@ -1,5 +1,5 @@
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "SETTLE",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:34Z",

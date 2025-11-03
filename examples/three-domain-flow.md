@@ -25,14 +25,14 @@ This example demonstrates a complete VGP transaction across three administrative
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "QUERY",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:00Z",
   "sender": "client-a.example.com",
   "destination": "provider-c.example.com",
   "attributes": {
-    "amount": {"value": 10.00, "currency": "USD"},
+    "amount": {"value": 10.00, "currency": "USDC"},
     "deadline": "2025-12-01T10:05:00Z",
     "qos": {"latency_ms": 500, "reliability": 0.99},
     "compliance": ["KYC"]
@@ -47,14 +47,14 @@ Gateway B forwards the query to Provider C (with its own signature):
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "QUERY",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:01Z",
   "sender": "gateway-b.example.com",
   "destination": "provider-c.example.com",
   "attributes": {
-    "amount": {"value": 9.50, "currency": "USD"},
+    "amount": {"value": 9.50, "currency": "USDC"},
     "deadline": "2025-12-01T10:05:00Z",
     "qos": {"latency_ms": 400, "reliability": 0.99},
     "compliance": ["KYC"]
@@ -73,7 +73,7 @@ Note: Gateway B takes a $0.50 fee, so downstream amount is reduced.
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "ADVERT",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:02Z",
@@ -82,7 +82,7 @@ Note: Gateway B takes a $0.50 fee, so downstream amount is reduced.
     {
       "path_id": "path-direct-c",
       "hops": ["provider-c.example.com"],
-      "cost": {"base": 8.00, "variable": 0.01, "currency": "USD"},
+      "cost": {"base": 8.00, "variable": 0.01, "currency": "USDC"},
       "risk_score": 0.01,
       "attributes": {
         "escrow_type": "htlc",
@@ -100,7 +100,7 @@ Note: Gateway B takes a $0.50 fee, so downstream amount is reduced.
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "ADVERT",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:03Z",
@@ -109,7 +109,7 @@ Note: Gateway B takes a $0.50 fee, so downstream amount is reduced.
     {
       "path_id": "path-via-b",
       "hops": ["gateway-b.example.com", "provider-c.example.com"],
-      "cost": {"base": 10.00, "variable": 0.02, "currency": "USD"},
+      "cost": {"base": 10.00, "variable": 0.02, "currency": "USDC"},
       "risk_score": 0.02,
       "attributes": {
         "escrow_type": "htlc",
@@ -136,7 +136,7 @@ Client A now knows:
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "SELECT",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:05Z",
@@ -160,7 +160,7 @@ Client A now knows:
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "SELECT",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:06Z",
@@ -188,7 +188,7 @@ Client A now knows:
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "LOCKED",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:07Z",
@@ -204,7 +204,7 @@ Client A now knows:
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "LOCKED",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:08Z",
@@ -255,7 +255,7 @@ Provider C processes request and logs TDR (Transaction Detail Record):
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "PROOF",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:31Z",
@@ -275,7 +275,7 @@ Provider C processes request and logs TDR (Transaction Detail Record):
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "PROOF",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:32Z",
@@ -299,7 +299,7 @@ Provider C processes request and logs TDR (Transaction Detail Record):
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "SETTLE",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:33Z",
@@ -317,7 +317,7 @@ Provider C receives $9.50.
 
 ```json
 {
-  "vgp_version": "0.1",
+  "tgp_version": "0.1",
   "message_type": "SETTLE",
   "request_id": "req-abc-123",
   "timestamp": "2025-12-01T10:00:34Z",
@@ -384,4 +384,4 @@ This example demonstrates VGP's core properties:
 3. **Trust isolation** (no global trust required)
 4. **Failure safety** (timeouts prevent lock-up)
 
-See [`/specs/VGP-00.md`](../specs/VGP-00.md) for full protocol details.
+See [`/specs/TGP-00.md`](../specs/TGP-00.md) for full protocol details.
