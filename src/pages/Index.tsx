@@ -15,8 +15,8 @@ const Index = () => {
                 <GitBranch className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Value Gateway Protocol</h1>
-                <p className="text-sm text-muted-foreground">VGP-00 Specification</p>
+                <h1 className="text-xl font-bold text-foreground">Transaction Gateway Protocol</h1>
+                <p className="text-sm text-muted-foreground">TGP-00 Specification</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -40,7 +40,7 @@ const Index = () => {
               Published by Ledger of Earth
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              BGP for Value
+              BGP for Transactions
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Trust-boundary routing protocol for atomic value transfers across administrative domains using HTLCs and path-vector routing
@@ -158,7 +158,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-16">
           <h3 className="text-2xl font-bold text-center mb-12 text-foreground">Documentation</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <a href="/specs/VGP-00.md" className="block">
+            <a href="/specs/TGP-00.md" className="block">
               <Card className="hover:border-primary transition-colors cursor-pointer h-full">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -194,7 +194,7 @@ const Index = () => {
                     JSON Schemas
                   </CardTitle>
                   <CardDescription>
-                    Message validation schemas for all VGP message types
+                    Message validation schemas for all TGP message types
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -222,7 +222,7 @@ const Index = () => {
                     One-Pager
                   </CardTitle>
                   <CardDescription>
-                    Executive summary and use cases for VGP
+                    Executive summary and use cases for TGP
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -261,7 +261,7 @@ const Index = () => {
                 </a>
               </Button>
               <Button variant="ghost" size="sm" asChild>
-                <a href="mailto:vgp@ledgerofearth.org">
+                <a href="mailto:dbigge@ledgerofearth.org">
                   Contact
                 </a>
               </Button>
