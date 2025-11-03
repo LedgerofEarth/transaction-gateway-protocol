@@ -1,10 +1,10 @@
-# Value Gateway Protocol (VGP-00)
+# Transaction Gateway Protocol (TGP-00)
 
 **Status:** Draft v0.1 — Published by Ledger of Earth  
-**Spec URL:** [/specs/VGP-00.md](./specs/VGP-00.md)  
-**Documentation Site:** https://ledgerofearth.github.io/vgp/
+**Spec URL:** [/specs/VGP-00.md](./specs/TGP-00.md)  
+**Documentation Site:** https://ledgerofearth.github.io/tgp/
 
-VGP defines a **trust-boundary protocol** for quoting, selecting, locking, and settling *value paths* across administrative or agentic domains.
+TGP defines a **trust-boundary protocol** for transaction quoting, selecting, locking, and settling *value paths* across administrative or agentic domains.
 
 It operates **above x402**, using extensible settlement mechanisms to ensure atomic value transfer while isolating financial logic from router control planes.
 
@@ -18,7 +18,7 @@ It operates **above x402**, using extensible settlement mechanisms to ensure ato
 
 ## Implementation Notes
 
-VGP itself is agnostic to wallet mapping or escrow design.  
+TGP itself is agnostic to wallet mapping or escrow design.  
 Implementations **MAY**:
 - Use E-NAT-style border wallets for policy isolation
 - Use HTLC or other escrow mechanisms for settlement (state channels, ZK-attested transfers, trusted custodial escrow)
@@ -35,11 +35,11 @@ This repository contains both the **protocol specification** and an **interactiv
 - **Read Locally:** All markdown files are browsable in this repository
 
 ### Core Files
-- **[/specs/VGP-00.md](./specs/VGP-00.md)** — Complete protocol specification
+- **[/specs/TGP-00.md](./specs/TGP-00.md)** — Complete protocol specification
 - **[/examples/three-domain-flow.md](./examples/three-domain-flow.md)** — Detailed example with JSON messages
-- **[/schemas/vgp-messages.json](./schemas/vgp-messages.json)** — JSON Schema for message validation
-- **[/drafts/VGP-attribute-registry.md](./drafts/VGP-attribute-registry.md)** — Extensible attribute definitions
-- **[/drafts/VGP-one-pager.md](./drafts/VGP-one-pager.md)** — Executive summary
+- **[/schemas/tgp-messages.json](./schemas/tgp-messages.json)** — JSON Schema for message validation
+- **[/drafts/TGP-attribute-registry.md](./drafts/TGP-attribute-registry.md)** — Extensible attribute definitions
+- **[/drafts/TGP-one-pager.md](./drafts/TGP-one-pager.md)** — Executive summary
 - **[/drafts/roadmap.md](./drafts/roadmap.md)** — Development roadmap
 
 ## Contributing
