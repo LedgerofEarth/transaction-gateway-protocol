@@ -1,77 +1,75 @@
-# Transaction Gateway Protocol (TGP-00)
+# Transaction Gateway Protocol (TGP)
 
-**Status:** Draft v0.1 — Published by Ledger of Earth  
-**Spec URL:** [/specs/VGP-00.md](./specs/TGP-00.md)  
-**Documentation Site:** https://ledgerofearth.github.io/tgp/
+**Status:** Draft Specification – v0.1  
+**Maintainer:** [Ledger of Earth](https://github.com/LedgerOfEarth)  
+**Linked PR:** [coinbase/x402 – TGP-00 Draft Spec](https://github.com/coinbase/x402/pulls)  
+**License:** MIT  
 
-TGP defines a **trust-boundary protocol** for transaction quoting, selecting, locking, and settling *value paths* across administrative or agentic domains.
+---
 
-It operates **above x402**, using extensible settlement mechanisms to ensure atomic value transfer while isolating financial logic from router control planes.
+## Overview
 
-## Core Principles
+The **Transaction Gateway Protocol (TGP)** is a proposed extension to [x402](https://github.com/coinbase/x402) that defines a control plane for routing and settling value across independent **Transaction Areas (TAs)**.
 
-- **Path-vector negotiation** (like BGP, but for value)
-- **Per-request lifecycle:** `DISCOVER → QUOTED → SELECTED → LOCKED → SERVING → PROVED → SETTLED → CLOSED`
-- **Secure mTLS peering** with signed adverts and encrypted TDR logs
-- **Policy enforcement** at gateway boundaries for compliance and risk management
-- **Extensible attribute registry** for QoS, risk, compliance, and escrow types
+TGP enables:
+- **Policy negotiation** between transaction domains  
+- **Multi-hop route discovery** for value transfers  
+- **Atomic settlement** coordination using HTLC-like primitives  
+- **Metadata exchange** describing cost, risk, and compliance
 
-## Implementation Notes
+TGP operates above x402 as a peer-to-peer signaling protocol—analogous to how **BGP** routes packets between autonomous systems, but applied to **value and trust boundaries**.
 
-TGP itself is agnostic to wallet mapping or escrow design.  
-Implementations **MAY**:
-- Use E-NAT-style border wallets for policy isolation
-- Use HTLC or other escrow mechanisms for settlement (state channels, ZK-attested transfers, trusted custodial escrow)
-- Choose any combination that satisfies atomic settlement and refund safety requirements
+---
 
-Both settlement mechanisms and enforcement architecture are deploy-time choices, not part of the VGP specification.
+## Purpose
 
-## Documentation
+This repository provides the **reference materials and PoC implementation** for TGP.  
+It serves as the companion to the [TGP-00 specification draft](./specs/TGP-00.md) submitted to the x402 project.
 
-This repository contains both the **protocol specification** and an **interactive documentation website**.
+It is intended for **discussion and interoperability testing**, not for production deployment.
 
-### View Documentation
-- **Web Interface:** Visit the [documentation site](https://ledgerofearth.github.io/vgp/) for an interactive experience
-- **Read Locally:** All markdown files are browsable in this repository
+---
 
-### Core Files
-- **[/specs/TGP-00.md](./specs/TGP-00.md)** — Complete protocol specification
-- **[/examples/three-domain-flow.md](./examples/three-domain-flow.md)** — Detailed example with JSON messages
-- **[/schemas/tgp-messages.json](./schemas/tgp-messages.json)** — JSON Schema for message validation
-- **[/drafts/TGP-attribute-registry.md](./drafts/TGP-attribute-registry.md)** — Extensible attribute definitions
-- **[/drafts/TGP-one-pager.md](./drafts/TGP-one-pager.md)** — Executive summary
-- **[/drafts/roadmap.md](./drafts/roadmap.md)** — Development roadmap
+## Repository Structure
 
-## Contributing
+| Path | Description |
+|------|--------------|
+| `specs/TGP-00.md` | Formal draft specification |
+| `examples/` | Example message flows and negotiation demos |
+| `schemas/` | JSON / TypeScript schema definitions for protocol metadata |
+| `docs/` | Supporting documentation and design notes |
 
-We welcome contributions! Please see our [extension proposal template](.github/ISSUE_TEMPLATE/extension-proposal.md) for suggesting new attributes, message types, or schema extensions.
+---
 
-## Development
+## Quick Start
 
-### Running Locally
-
-To run the documentation site locally:
+Clone and explore locally:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
+git clone https://github.com/LedgerOfEarth/transaction-gateway-protocol.git
+cd transaction-gateway-protocol
+open specs/TGP-00.md
 ```
 
-The site will be available at `http://localhost:8080`.
+You can also view the active draft online via the [TGP-00 PR at Coinbase/x402](https://github.com/coinbase/x402/pulls).
 
-### Building for Production
+---
 
-```bash
-npm run build
-```
+## Context
 
-## License
+TGP aims to provide a foundation for:
+- **AI agentic payments** across compute and data domains  
+- **Telecom-grade transaction gateways** for blockchain networks  
+- **Cross-chain coordination** where economic or regulatory boundaries exist  
 
-Apache 2.0 — open for reference and contribution.
+It is the first step toward a **Transaction Border Controller (TBC)** framework—establishing verifiable trust, cost, and policy layers above transport.
 
-## About Ledger of Earth
+---
 
-This protocol is published by [Ledger of Earth](https://ledgerofearth.org), advancing trust-boundary value routing for the x402 ecosystem.
+## Disclaimer
+
+This repository is part of the **Ledger of Earth** research initiative exploring blockchain-based transaction control planes for autonomous systems and carrier-grade environments.
+
+> **Important:**  
+> This is a **conceptual prototype** for peer review.  
+> It is *not audited, production-ready, or intended for commercial use.*
