@@ -1,18 +1,18 @@
-# VGP One-Pager: Value Gateway Protocol
+# TGP One-Pager: Value Gateway Protocol
 
-**Tagline:** *BGP for value — routing payments across trust boundaries*
+**Tagline:** *BGP for transactions — routing payments across trust boundaries*
 
 ---
 
-## What is VGP?
+## What is TGP?
 
-**Value Gateway Protocol (VGP)** is a trust-boundary routing protocol that enables atomic value transfers across administrative, economic, or policy domains without requiring global trust.
+**Transaciton Gateway Protocol (TGP)** is a trust-boundary routing protocol that enables atomic value transfers across administrative, economic, or policy domains without requiring global trust.
 
 Think **BGP** (Internet routing) meets **Lightning Network** (payment channels) — but for *any* value transfer, not just cryptocurrency.
 
 ---
 
-## Why VGP?
+## Why TGP?
 
 ### The Problem
 - Modern systems need to exchange value across **trust boundaries** (org ↔ org, agent ↔ agent, tier ↔ tier)
@@ -22,10 +22,10 @@ Think **BGP** (Internet routing) meets **Lightning Network** (payment channels) 
   - **Siloed networks** (no interoperability)
 
 ### The Solution
-VGP enables:
+TGP enables:
 - **Atomic settlement** via HTLCs (all-or-nothing transfers)
 - **Path-vector routing** (advertise costs/policies without exposing internals)
-- **Policy enforcement** at E-NAT wallets (compliance, rate limits, risk scoring)
+- **Policy enforcement** of Agent wallets (compliance, rate limits, risk scoring)
 - **Zero global trust** (each hop validates locally)
 
 ---
@@ -61,7 +61,7 @@ Provider reveals secret → HTLCs unlock in cascade:
 ## Key Components
 
 ### Gateway Functions
-VGP gateways manage trust boundaries by:
+TGP gateways manage trust boundaries by:
 - Holding HTLCs for cross-domain transfers
 - Enforcing local policy (KYC, rate limits, compliance)
 - Routing messages between peered domains
@@ -100,14 +100,14 @@ AI agents buy/sell services (compute, data, models) across organizational bounda
 
 ### 3. **Tiered Access**
 SaaS platform routes users across free/pro/enterprise tiers:
-- VGP enforces usage caps, compliance at tier boundaries
+- TGP enforces TPS caps, compliance at tier boundaries
 - Automatic upgrade path when free tier exhausted
 - Transparent cost signaling for users
 
 ### 4. **Cross-Border Payments**
 Remittance across payment rails (SWIFT, SEPA, ACH, crypto):
 - Each rail advertises FX rates + settlement times
-- VGP routes via cheapest/fastest path
+- TGP routes via cheapest/fastest path
 - HTLC ensures no funds lost if intermediary fails
 
 ---
@@ -115,15 +115,15 @@ Remittance across payment rails (SWIFT, SEPA, ACH, crypto):
 ## Integration with x402
 
 **x402** = transport + signaling layer (QUIC/mTLS, TDR logging)  
-**VGP** = economic routing layer (path discovery, HTLC coordination)
+**TGP** = economic routing layer (path discovery, HTLC coordination)
 
-VGP state carried in x402 `htlc-path` header:
+TGP state carried in x402 `htlc-path` header:
 ```
 htlc-path: request_id=req-123; path_id=path-1; htlc_id=htlc-456; status=LOCKED
 ```
 
 This enables:
-- x402 routers log VGP state in TDRs
+- x402 routers log TGP state in TDRs
 - Proof-of-value tied to service delivery
 - Atomic settlement coordinated across hops
 
@@ -159,4 +159,4 @@ This enables:
 
 ---
 
-**VGP enables the Internet of Value — routing payments as flexibly as we route packets.**
+**TGP enables the Internet of Value — routing payments as flexibly as we route packets.**

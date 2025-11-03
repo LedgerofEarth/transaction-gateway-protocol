@@ -1,4 +1,4 @@
-# VGP Attribute Registry
+# TGP Attribute Registry
 
 **Status:** Draft  
 **Version:** 0.1
@@ -7,7 +7,7 @@
 
 ## Overview
 
-The **VGP Attribute Registry** defines standardized metadata fields that can be included in `QUERY`, `ADVERT`, and path negotiation messages. Attributes enable rich path selection based on cost, quality-of-service, compliance, risk, and domain-specific requirements.
+The **TGP Attribute Registry** defines standardized metadata fields that can be included in `QUERY`, `ADVERT`, and path negotiation messages. Attributes enable rich path selection based on cost, quality-of-service, compliance, risk, and domain-specific requirements.
 
 ---
 
@@ -265,4 +265,4 @@ Clients **SHOULD** validate required attributes are supported before selecting p
 ---
 
 **Maintainer:** Ledger of Earth  
-**Contact:** vgp@ledgerofearth.org
+**Contact:** dbigge@ledgerofearth.org
