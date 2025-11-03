@@ -22,7 +22,7 @@ const Index = () => {
             <div className="flex items-center gap-2">
               <Badge variant="secondary">v0.1-draft</Badge>
               <Button variant="outline" size="sm" asChild>
-                <a href="https://github.com/ledgerofearth/vgp" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/ledgerofearth/tgp" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
@@ -166,7 +166,7 @@ const Index = () => {
                     Full Specification
                   </CardTitle>
                   <CardDescription>
-                    Complete VGP-00 protocol definition with message types and state machine
+                    Complete TGP-00 protocol definition with message types and state machine
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -214,7 +214,7 @@ const Index = () => {
               </Card>
             </a>
 
-            <a href="/drafts/VGP-one-pager.md" className="block">
+            <a href="/drafts/TGP-one-pager.md" className="block">
               <Card className="hover:border-primary transition-colors cursor-pointer h-full">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">

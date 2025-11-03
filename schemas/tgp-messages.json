@@ -1,16 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "VGP Message Schemas",
+  "title": "TGP Message Schemas",
   "version": "0.1",
   "definitions": {
     "BaseMessage": {
       "type": "object",
-      "required": ["vgp_version", "message_type", "request_id", "timestamp", "sender", "signature"],
+      "required": ["tgp_version", "message_type", "request_id", "timestamp", "sender", "signature"],
       "properties": {
         "vgp_version": {
           "type": "string",
           "pattern": "^\\d+\\.\\d+$",
-          "description": "VGP protocol version"
+          "description": "TPG protocol version"
         },
         "message_type": {
           "type": "string",
