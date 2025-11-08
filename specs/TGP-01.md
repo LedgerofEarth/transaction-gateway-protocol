@@ -1,4 +1,4 @@
-# TGP-01: Proof-of-Settlement and Economic Envelope Extension
+# TGP-01: Proof-of-Settlement and Economic Envelope Extension.
 
 **Spec Family:** TGP-00  
 **Version:** 0.1-draft  
