@@ -62,26 +62,34 @@ TGP is designed to operate across trust domains, enabling value-routing and poli
 TGP Topology Component Definitions
 	•	Buyer
 The economic initiator of a transaction. Typically originates a QUERY or ACCEPT message, provides payment, and expects delivery of a good, service, or receipt.
+
 	•	Buyer Agent
+	
 An AI, browser extension, TBC instance, or delegated actor representing the buyer. It may handle escrow initiation, proof validation, or fulfillment verification.
+	
 	•	Seller
 The economic recipient of value in exchange for delivering a product or fulfilling a service. Often responsible for confirming receipt or responding to policy-bound delivery.
+	
 	•	Seller Agent
 An automated or delegated component that performs fulfillment validation, delivery tracking, or escrow interaction on behalf of the seller.
+	
 	•	Gateway
 A TGP-aware process that resides at the trust boundary of a domain. It interprets TGP messages, enforces policy constraints, and facilitates routing and session handoff. In many deployments, it also acts as a facilitator or a TBC.
+	
 	•	Transaction Border Controller (TBC)
 A hardened Gateway that adds rate-limiting, session logging, compliance enforcement, and protocol translation. It serves as the institutional or carrier-grade version of a Gateway.
+	
 	•	Facilitator
 In x402-based flows, the facilitator acts as the payment intermediary. It may hold value temporarily or coordinate settlement between the buyer and seller without direct custody of goods. In TGP, the Gateway often serves this role.
+	
 	•	Prover (Escrow Middleware)
 The TGP settlement controller. It verifies mutual acknowledgment of fulfillment before releasing escrowed funds or receipts. This component may operate as a smart contract with off-chain hooks, generating proof-of-receipt or compliance attestations. In ZK-enabled deployments, it may also validate zero-knowledge fulfillment proofs.
+	
 	•	Attribute Registry
 A service or index that maps domain metadata (such as jurisdiction, compliance policies, or ledger characteristics) into policy tags or session constraints. Gateways use registries for trust evaluation and route decisions.
+	
 	•	x402 Service
 A Layer 7 payment endpoint compatible with Coinbase’s x402 protocol. It receives TGP metadata, advertises price and terms, and interacts with the Gateway as part of session establishment. Optionally integrated directly into the Gateway.
-
-### 1.4 Settlement Topologies
 
 ### 1.4 Settlement Topologies
 
