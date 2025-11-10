@@ -60,6 +60,7 @@ All accepted sessions result in emission of a **Transaction Detail Record (TDR)*
 TGP is designed to operate across trust domains, enabling value-routing and policy negotiation between distinct agents, networks, and protocols. The topology includes both human participants and machine agents that mediate trust and compliance across domain boundaries.
 
 TGP Topology Component Definitions
+	
 	•	Buyer
 The economic initiator of a transaction. Typically originates a QUERY or ACCEPT message, provides payment, and expects delivery of a good, service, or receipt.
 
