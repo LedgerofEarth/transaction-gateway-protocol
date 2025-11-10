@@ -54,8 +54,8 @@ All accepted sessions result in emission of a **Transaction Detail Record (TDR)*
 
 
 # TGP-00: Transaction Gateway Protocol
-...
-1.1 Network Topology Components
+
+1.1 Network Topology
 
 TGP is designed to operate across trust domains, enabling value-routing and policy negotiation between distinct agents, networks, and protocols. The topology includes both human participants and machine agents that mediate trust and compliance across domain boundaries.
 
@@ -73,7 +73,7 @@ A TGP-aware process that resides at the trust boundary of a domain. It interpret
 	•	Transaction Border Controller (TBC)
 A hardened Gateway that adds rate-limiting, session logging, compliance enforcement, and protocol translation. It serves as the institutional or carrier-grade version of a Gateway.
 	•	Facilitator
-In x402-based flows, the facilitator acts as the payment intermediary. It may hold value temporarily, or coordinate settlement between the buyer and seller without direct custody of goods. In TGP, the Gateway often serves this role.
+In x402-based flows, the facilitator acts as the payment intermediary. It may hold value temporarily or coordinate settlement between the buyer and seller without direct custody of goods. In TGP, the Gateway often serves this role.
 	•	Prover (Escrow Middleware)
 The TGP settlement controller. It verifies mutual acknowledgment of fulfillment before releasing escrowed funds or receipts. This component may operate as a smart contract with off-chain hooks, generating proof-of-receipt or compliance attestations. In ZK-enabled deployments, it may also validate zero-knowledge fulfillment proofs.
 	•	Attribute Registry
@@ -94,18 +94,18 @@ In this path, the TGP Gateway also functions as an x402 facilitator. The buyer s
             x402-Based Settlement Flow (Gateway as Facilitator)
 
     ┌────────────────────────────────────────────────────────┐
-    │                    CONTROL PLANE                       │
-    │                                                        │
-    │   Buyer ─────→ Gateway (TGP + x402 Facilitator) ─────→ Seller   │
-    │        (sends X-TGP and signed X-PAYMENT headers)      │
+    │                    CONTROL PLANE                                                            │
+    │                                                                                             │
+    │   Buyer ─────→ Gateway (TGP + x402 Facilitator) ─────→ Seller                       │
+    │        (sends X-TGP and signed X-PAYMENT headers)                                           │
     └────────────────────────────────────────────────────────┘
                          │                          ▲
                          ▼                          │
     ┌────────────────────────────────────────────────────────┐
-    │                   SETTLEMENT PLANE                     │
-    │                                                        │
-    │   Buyer ─── signed tx ───→ Gateway ─── tx submit ───→ Blockchain  │
-    │                (payload)         (pays gas)         (sends to seller) │
+    │                   SETTLEMENT PLANE                                                          │
+    │                                                                                             │
+    │   Buyer ─── signed tx ───→ Gateway ─── tx submit ───→ Blockchain                  │
+    │                (payload)         (pays gas)         (sends to seller)                       │
     └────────────────────────────────────────────────────────┘
 
 
