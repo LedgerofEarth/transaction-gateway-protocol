@@ -1,0 +1,27 @@
+{
+  "type": "QUERY",
+  "tgp_version": "3.4",
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "nonce": 42,
+  "timestamp": 1704067200000,
+  "origin_address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+  "intent": {
+    "verb": "COMMIT",
+    "party": "BUYER",
+    "mode": "DIRECT",
+    "payload": {
+      "order_id": "ORD-2025-001",
+      "amount_wei": "1000000000000000000",
+      "asset": "NATIVE",
+      "merchant_id": "acme-electronics",
+      "metadata": {
+        "merchant_name": "Acme Electronics",
+        "invoice_ref": "INV-2025-500"
+      }
+    }
+  },
+  "chain_id": 943,
+  "force_wallet": false,
+  "signature": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef00"
+}
+

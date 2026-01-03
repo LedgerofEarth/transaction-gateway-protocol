@@ -1,9 +1,9 @@
-# TBC Demo Build File — Single-Hop x402 + TGP Metadata
+# Gateway Demo Build File — Single-Hop x402 + TGP Metadata
 **Version:** 0.1 • **Date:** 2025-11-04
 
-This build file walks you through creating a **minimal, demonstrable TBC prototype** that shows a **single-hop payment** over **x402** with **Transaction Gateway Protocol (TGP) metadata** enforced by a simple policy layer and recorded as **TDR logs**.
+This build file walks you through creating a **minimal, demonstrable Gateway prototype** that shows a **single-hop payment** over **x402** with **Transaction Gateway Protocol (TGP) metadata** enforced by a simple policy layer and recorded as **TDR logs**.
 
-> Outcome: you’ll start one Express server that (a) enforces a mock TBC policy via `X-TGP` header, (b) logs a flat-file TDR for each transaction, and (c) either calls the real `x402` middleware **or** runs in **mock-settlement** mode if x402 isn’t present.
+> Outcome: you’ll start one Express server that (a) enforces a mock Gateway policy via `X-TGP` header, (b) logs a flat-file TDR for each transaction, and (c) either calls the real `x402` middleware **or** runs in **mock-settlement** mode if x402 isn’t present.
 
 ---
 
@@ -200,7 +200,7 @@ function yyyymmdd(d: Date) {
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const dd = String(d.getDate()).padStart(2, "0");
-  return `${y}{m}{dd}`;
+  return `${y}${m}${dd}`;
 }
 
 export function appendTdr(rec: TdrRecord) {
@@ -210,7 +210,8 @@ export function appendTdr(rec: TdrRecord) {
   const line = Object.entries(rec)
     .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
     .join(" ");
-  fs.appendFileSync(f, line + "\n", "utf-8");
+  fs.appendFileSync(f, line + "
+", "utf-8");
   console.log("[TDR]", line);
 }
 ```
@@ -314,7 +315,7 @@ const resourceHandler = async (req: express.Request, res: express.Response) => {
 app.post("/resource", resourceHandler);
 
 app.listen(PORT, () => {
-  console.log(`TBC demo listening on http://localhost:${PORT} (mode=${SETTLEMENT_MODE})`);
+  console.log(`Gateway demo listening on http://localhost:${PORT} (mode=${SETTLEMENT_MODE})`);
 });
 ```
 
@@ -354,12 +355,13 @@ function evalPolicy(tgp, table) {
 }
 
 // TDR logger
-function yyyymmdd(d) { const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), dd=String(d.getDate()).padStart(2,"0"); return `${y}{m}{dd}`; }
+function yyyymmdd(d) { const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), dd=String(d.getDate()).padStart(2,"0"); return `${y}${m}${dd}`; }
 function appendTdr(rec) {
   const dir = path.join(process.cwd(), "logs"); if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   const f = path.join(dir, `tdr-${yyyymmdd(new Date())}.log`);
   const line = Object.entries(rec).map(([k, v]) => `${k}=${JSON.stringify(v)}`).join(" ");
-  fs.appendFileSync(f, line + "\n", "utf-8"); console.log("[TDR]", line);
+  fs.appendFileSync(f, line + "
+", "utf-8"); console.log("[TDR]", line);
 }
 
 // Optional x402
@@ -397,7 +399,7 @@ app.post("/resource", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`TBC demo listening on http://localhost:${PORT} (mode=${SETTLEMENT_MODE})`));
+app.listen(PORT, () => console.log(`Gateway demo listening on http://localhost:${PORT} (mode=${SETTLEMENT_MODE})`));
 ```
 
 ---
@@ -432,7 +434,7 @@ Replace your `package.json` with something like:
 ## 12) Run it
 ```bash
 pnpm dev       # or: npm run dev
-# -> TBC demo listening on http://localhost:3000 (mode=mock)
+# -> Gateway demo listening on http://localhost:3000 (mode=mock)
 curl -s localhost:3000/health | jq
 ```
 
@@ -442,17 +444,17 @@ curl -s localhost:3000/health | jq
 
 ### 13.1 Accept (US→EU with KYC)
 ```bash
-curl -X POST http://localhost:3000/resource \  -H 'Content-Type: application/json' \  -H 'X-TGP: {"path":["TA:US","TA:EU"],"policy":{"kyc_passed":true},"src_zone":"TA:US","dst_zone":"TA:EU","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc123","ts":1730745600}' \  -d '{"payload":"demo"}'
+curl -X POST http://localhost:3000/resource   -H 'Content-Type: application/json'   -H 'X-TGP: {"path":["TA:US","TA:EU"],"policy":{"kyc_passed":true},"src_zone":"TA:US","dst_zone":"TA:EU","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc123","ts":1730745600}'   -d '{"payload":"demo"}'
 ```
 
 ### 13.2 Reject (US→EU without KYC)
 ```bash
-curl -X POST http://localhost:3000/resource \  -H 'Content-Type: application/json' \  -H 'X-TGP: {"path":["TA:US","TA:EU"],"src_zone":"TA:US","dst_zone":"TA:EU","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc124","ts":1730745601}' \  -d '{"payload":"demo"}'
+curl -X POST http://localhost:3000/resource   -H 'Content-Type: application/json'   -H 'X-TGP: {"path":["TA:US","TA:EU"],"src_zone":"TA:US","dst_zone":"TA:EU","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc124","ts":1730745601}'   -d '{"payload":"demo"}'
 ```
 
 ### 13.3 Accept (US→US without KYC)
 ```bash
-curl -X POST http://localhost:3000/resource \  -H 'Content-Type: application/json' \  -H 'X-TGP: {"path":["TA:US","TA:US"],"src_zone":"TA:US","dst_zone":"TA:US","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc125","ts":1730745602}' \  -d '{"payload":"demo"}'
+curl -X POST http://localhost:3000/resource   -H 'Content-Type: application/json'   -H 'X-TGP: {"path":["TA:US","TA:US"],"src_zone":"TA:US","dst_zone":"TA:US","intent":"pay:$0.01:/resource/compute/100ms","nonce":"abc125","ts":1730745602}'   -d '{"payload":"demo"}'
 ```
 
 Check TDR output:
@@ -482,7 +484,7 @@ const x402Mw = x402.paymentMiddleware(process.env.RECEIVER_ADDRESS, {
 ---
 
 ## 15) What this proves
-- **Policy-aware gatekeeping** at the trust boundary (TBC behavior).  
+- **Policy-aware gatekeeping** at the trust boundary (Gateway behavior).  
 - **TGP-as-metadata** carried end-to-end and **enforced locally**.  
 - **Deterministic TDR** for flat-file ingestion by carrier back office.  
 - **Pluggable settlement**: mock today, x402 tomorrow—same code path.
@@ -500,7 +502,7 @@ const x402Mw = x402.paymentMiddleware(process.env.RECEIVER_ADDRESS, {
 ## 17) Copy-ready snippets
 **Add to README:**
 ```
-A minimal TBC demo showing policy-aware single-hop settlement with TGP metadata.
+A minimal Gateway demo showing policy-aware single-hop settlement with TGP metadata.
 - Policy: ./policy.json
 - TDR:    ./logs/tdr-YYYYMMDD.log
 - Header: X-TGP: JSON string containing path/policy/intent

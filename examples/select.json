@@ -1,0 +1,14 @@
+{
+  "tgp_version": "0.1",
+  "message_type": "SELECT",
+  "request_id": "req-abc-123",
+  "timestamp": "2025-12-01T10:00:05Z",
+  "sender": "client-a.example.com",
+  "path_id": "path-via-b",
+  "htlc_params": {
+    "hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timeout": "2025-12-01T10:05:00Z",
+    "amount": 10.00
+  },
+  "signature": "ed25519-sig-client-a-placeholder"
+}

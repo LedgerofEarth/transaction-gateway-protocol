@@ -1,0 +1,13 @@
+{
+  "tgp_version": "0.1",
+  "message_type": "PROOF",
+  "request_id": "req-abc-123",
+  "timestamp": "2025-12-01T10:00:31Z",
+  "sender": "provider-c.example.com",
+  "htlc_secret": "preimage-secret-xyz",
+  "proof_data": {
+    "tdr_hash": "sha256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+    "signature": "ed25519-sig-provider-c-placeholder"
+  },
+  "signature": "ed25519-sig-provider-c-placeholder"
+}

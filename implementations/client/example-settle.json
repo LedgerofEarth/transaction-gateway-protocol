@@ -1,0 +1,13 @@
+{
+  "type": "SETTLE",
+  "tgp_version": "3.4",
+  "id": "660e9511-f3ac-52e5-b827-557766551111",
+  "nonce": 43,
+  "timestamp": 1704067800000,
+  "origin_address": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+  "order_id": "ORD-2025-001",
+  "preview_hash": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+  "chain_id": 943,
+  "signature": "0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321fedcba09876543210"
+}
+

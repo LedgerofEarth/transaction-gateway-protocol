@@ -1,0 +1,26 @@
+{
+  "tgp_version": "0.1",
+  "message_type": "ADVERT",
+  "request_id": "req-abc-123",
+  "timestamp": "2025-12-01T10:00:03Z",
+  "sender": "gateway-b.example.com",
+  "paths": [
+    {
+      "path_id": "path-via-b",
+      "hops": ["gateway-b.example.com", "provider-c.example.com"],
+      "cost": {
+        "base": 10.00,
+        "variable": 0.02,
+        "currency": "USDC"
+      },
+      "risk_score": 0.02,
+      "attributes": {
+        "escrow_type": "htlc",
+        "settlement_time_max": 180,
+        "compliance": ["KYC"]
+      }
+    }
+  ],
+  "ttl": 60,
+  "signature": "ed25519-sig-gateway-b-placeholder"
+}

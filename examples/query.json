@@ -1,0 +1,21 @@
+{
+  "tgp_version": "0.1",
+  "message_type": "QUERY",
+  "request_id": "req-abc-123",
+  "timestamp": "2025-12-01T10:00:00Z",
+  "sender": "client-a.example.com",
+  "destination": "provider-c.example.com",
+  "attributes": {
+    "amount": {
+      "value": 10.00,
+      "currency": "USDC"
+    },
+    "deadline": "2025-12-01T10:05:00Z",
+    "qos": {
+      "latency_ms": 500,
+      "reliability": 0.99
+    },
+    "compliance": ["KYC"]
+  },
+  "signature": "ed25519-sig-client-a-placeholder"
+}
